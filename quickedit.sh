@@ -41,7 +41,7 @@ old_file_content="$(cat "$filetoopen")"
 if [[ ! $status -eq 0 ]]
 then
         # echo "Fehler $status!"
-        zenity --info --title="quickedit - Fehler \[$status\]!" --text="Abbruch!\nBeim Sichern der Datei gab \"cat\" den Fehlercode $status zurück!"
+        zenity --info --title="quickedit - Fehler [$status]!" --text="Abbruch!\nBeim Sichern der Datei gab \"cat\" den Fehlercode $status zurück!"
 	exit
 fi
 
@@ -59,7 +59,7 @@ elif [[ ! -z "$new_file_content" ]] && [[ ! "$new_file_content" == "$old_file_co
 	if [[ ! $status -eq 0 ]]
 	then
 		printf "%s$old_file_content\n" "" > $filetoopen
-		zenity --info --title="quickedit - Fehler \[$status\]!" --text="Beim Speichern der Datei gab \"printf\" den Fehlercode $status zurück\nund die Datei wurde in den Originalzustand zurückgesetzt!" --ellipsize
+		zenity --info --title="quickedit - Fehler [$status]!" --text="Beim Speichern der Datei gab \"printf\" den Fehlercode $status zurück\nund die Datei wurde in den Originalzustand zurückgesetzt!" --ellipsize
 	elif [ $status -eq 0 ]
 	then
 		zenity --info --title="quickedit" --text="Speichern erfolgreich!" --ellipsize
