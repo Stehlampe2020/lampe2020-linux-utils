@@ -32,7 +32,7 @@ then
 	zenity --info --title="edit-commandlist" --text="Abgebrochen! Keine Änderung erkannt!" --ellipsize
 elif [[ ! -z "$new_file_content" ]] && [[ ! "$new_file_content" == "$old_file_content" ]]
 	then
-	printf "%s$new_file_content\n" "" > $HOME/.bash_history
+	echo "$new_file_content" > $HOME/.bash_history
 	status=$?
 	if [[ ! $status -eq 0 ]]
 	then
