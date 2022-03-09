@@ -37,7 +37,7 @@ do
     loop_already_tried_to_open_a_file=1
 done
 zenity --info --title="Hinweis - quickedit" --text="Wenn Sie unter dem Textfeld im folgenden Fenster auf \"Abbrechen\" klicken oder das Textfeld leer ist wenn Sie\nunter dem Textfeld im folgenden Fenster auf \"OK\" klicken, wird die Datei nicht verändert.\nWenn Sie im Textfeld im folgenden Fenster [Esc] drücken, wird der Vorgang abgebrochen und\nwenn Sie im Textfeld im folgenden Fenster [Strg + Enter] drücken, wird der Inhalt des Textfeldes ausgewertet." --ellipsize
-old_file_content="$(cat $filetoopen)"
+old_file_content="$(cat "$filetoopen")"
 if [[ ! $status -eq 0 ]]
 then
         # echo "Fehler $status!"
@@ -45,7 +45,7 @@ then
 	exit
 fi
 
-new_file_content="$(cat $filetoopen | zenity --text-info --title="$filetoopen" --font="mono" --editable)"
+new_file_content="$(cat "$filetoopen" | zenity --text-info --title="\"$filetoopen\" - quickedit" --font="mono" --editable)"
 if [ -z "$new_file_content" ]
 then
 	zenity --info --title="quickedit" --text="Abgebrochen"
@@ -54,7 +54,7 @@ then
 	zenity --info --title="quickedit" --text="Abgebrochen! Keine Änderung erkannt!" --ellipsize
 elif [[ ! -z "$new_file_content" ]] && [[ ! "$new_file_content" == "$old_file_content" ]]
 	then
-	printf "%s$new_file_content" "" > $filetoopen
+	printf "%s$new_file_content" "" > "$filetoopen"
 	status=$?
 	if [[ ! $status -eq 0 ]]
 	then
