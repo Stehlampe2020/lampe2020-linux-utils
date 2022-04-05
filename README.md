@@ -1,6 +1,5 @@
 # lampe2020-linux-utils
-This is a collection of self-made (but not all self-invented) linux programs, most of them are shell scripts.   
-Some of them may (at first) only be available in German.   
+This is a collection of self-made (but not all self-invented) linux programs, most of them are shell scripts which just provide a GUI for certain CLI tasks. Some of them may only be available in German.   
    
 # List of all the programs with their own description
 ## createarchvepng
